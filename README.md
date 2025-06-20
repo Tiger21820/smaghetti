@@ -1,4 +1,4 @@
-# Archived as of Feb 16, 20231
+# Archived as of Feb 16, 2023
 
 Smaghetti is no longer worked on by me (Matt Greer). I would love to, but I just don't have the time anymore.
 The remaining things that Smaghetti needs are really big and hard, and the tiny pockets of free time here and
