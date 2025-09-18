@@ -1,4 +1,4 @@
-Below is Smaghetti's Code of Conduct. This CoC applies to all areas of Smaghetti: the GitHub repo, the site itself, the discord, subreddit and anywhere else Smaghetti is discussed in an official capacity.
+aBelow is Smaghetti's Code of Conduct. This CoC applies to all areas of Smaghetti: the GitHub repo, the site itself, the discord, subreddit and anywhere else Smaghetti is discussed in an official capacity.
 
 This is the CoC from contributor-covenant.org, but with one addition specific to Smaghetti: _do not ask for copyrighted files or artifacts. No asking for ROMs, e-reader files, or anything owned or copyrighted by someone else. This includes asking on GitHub, Reddit, Twitter or via direct communication with people involved with Smaghetti._
 
