@@ -1,4 +1,6 @@
 import { getEmptySave } from '../components/FileLoader/files';
+import { compress } from './compress';
+import { createCardData } from './createCardData';
 import { createLevelData } from './createLevelData';
 import { injectLevelIntoSave } from './injectLevelIntoSave';
 import { getECoinInfo } from './util';
@@ -77,10 +79,39 @@ function downloadLevelAsLevelFile(level: LevelToLoadInGBA) {
 	sendBlobToAnchorTag(fileBlob, getSafeFileName(level.name, 'level'));
 }
 
+function downloadLevelAsBin(level: LevelToLoadInGBA) {
+	const binaryLevel = createLevelData(level);
+	const compressedLevel0 = compress(binaryLevel, 0x0);
+	const compressedLevel8 = compress(binaryLevel, 0x80);
+	const compressedLevel =
+		compressedLevel0.length < compressedLevel8.length
+			? compressedLevel0
+			: compressedLevel8;
+
+	const cardBin = createCardData(compressedLevel);
+
+	const fileBlob = new Blob([cardBin.buffer], {
+		type: 'application/octet-stream',
+	});
+
+	sendBlobToAnchorTag(fileBlob, getSafeFileName(level.name, 'bin'));
+}
+
+function downloadLevelAsLevelFileWithHeader(level: LevelToLoadInGBA) {
+	const binaryLevel = createLevelData(level);
+
+	const fileBlob = new Blob([binaryLevel.buffer], {
+		type: 'application/octet-stream',
+	});
+
+	sendBlobToAnchorTag(fileBlob, getSafeFileName(level.name, 'level'));
+}
+
 export {
 	downloadLevelAsSaveFile,
 	downloadSetOfLevelsAsSaveFile,
 	downloadLevelAsJson,
 	downloadLevelAsLevelFile,
+	downloadLevelAsBin,
 	sendBlobToAnchorTag,
 };

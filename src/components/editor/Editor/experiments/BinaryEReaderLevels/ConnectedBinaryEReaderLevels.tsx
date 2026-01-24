@@ -4,7 +4,10 @@ import { useSelector } from 'react-redux';
 import { BinaryEReaderLevels } from './BinaryEReaderLevels';
 import { AppState, dispatch } from '../../../../../store';
 import { loadBinaryEReaderLevel } from '../../../editorSlice';
-import { downloadLevelAsLevelFile } from '../../../../../levelData/downloadLevelAsSaveFile';
+import {
+	downloadLevelAsLevelFile,
+	downloadLevelAsBin,
+} from '../../../../../levelData/downloadLevelAsSaveFile';
 
 type ConnectedBinaryEReaderLevelsProps = {
 	onRequestClose: () => void;
@@ -30,6 +33,19 @@ function ConnectedBinaryEReaderLevels({
 		onRequestClose();
 	}
 
+	function handleDownloadBin() {
+		const level: LevelToLoadInGBA = {
+			name,
+			data: {
+				settings,
+				rooms,
+			},
+		};
+
+		downloadLevelAsBin(level);
+		onRequestClose();
+	}
+
 	function handleBinaryLevelFile(file: File) {
 		dispatch(loadBinaryEReaderLevel(file));
 		onRequestClose();
@@ -38,6 +54,7 @@ function ConnectedBinaryEReaderLevels({
 	return (
 		<BinaryEReaderLevels
 			onDownload={handleDownload}
+			onDownloadBin={handleDownloadBin}
 			onBinaryLevelFile={handleBinaryLevelFile}
 		/>
 	);
