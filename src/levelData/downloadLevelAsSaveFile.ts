@@ -97,16 +97,6 @@ function downloadLevelAsBin(level: LevelToLoadInGBA) {
 	sendBlobToAnchorTag(fileBlob, getSafeFileName(level.name, 'bin'));
 }
 
-function downloadLevelAsLevelFileWithHeader(level: LevelToLoadInGBA) {
-	const binaryLevel = createLevelData(level);
-
-	const fileBlob = new Blob([binaryLevel.buffer], {
-		type: 'application/octet-stream',
-	});
-
-	sendBlobToAnchorTag(fileBlob, getSafeFileName(level.name, 'level'));
-}
-
 export {
 	downloadLevelAsSaveFile,
 	downloadSetOfLevelsAsSaveFile,
