@@ -3,11 +3,13 @@ import { Button, ButtonMimickLabel } from '../../../../Button';
 
 type InternalBinaryEReaderLevelsProps = {
 	onDownload: () => void;
+	onDownloadBin: () => void;
 	onBinaryLevelFile: (file: File) => void;
 };
 
 function BinaryEReaderLevels({
 	onDownload,
+	onDownloadBin,
 	onBinaryLevelFile,
 }: InternalBinaryEReaderLevelsProps) {
 	function handleUpload(e: React.ChangeEvent<HTMLInputElement>) {
@@ -25,7 +27,8 @@ function BinaryEReaderLevels({
 				game uses. It&apos;s a really big change, but will bring many benefits.
 			</p>
 			<div className="mt-2 flex flex-row gap-x-4 items-center justify-center">
-				<Button onClick={onDownload}>Download level as binary</Button>
+				<Button onClick={onDownload}>Download level as .level</Button>
+				<Button onClick={onDownloadBin}>Download level as .bin</Button>
 				<ButtonMimickLabel>
 					Load binary level
 					<input
